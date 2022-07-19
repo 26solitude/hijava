@@ -6,6 +6,8 @@ public class HelloJava {
 		HelloJava.say("Hi Java!");
 //		JVM이 스스로 화면에 출력
 		say("Hello Java!");
+		int a=10;
+		System.out.println(a);
 	}
 
 	public static void say(String msg) {
