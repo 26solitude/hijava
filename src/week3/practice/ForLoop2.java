@@ -11,5 +11,5 @@ public class ForLoop2 {
 				System.out.println(i+" * "+j+" = "+i*j);
 			}
 		}
-	}//
+	}
 }
