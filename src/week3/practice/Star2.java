@@ -11,7 +11,7 @@ public class Star2 {
 				System.out.print('*');
 			}System.out.println();
 		}
-		
+//		
 		for(int k=1;k<8; k++)
 		{
 			for(int l=1; l<k; l++)

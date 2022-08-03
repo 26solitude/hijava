@@ -11,7 +11,7 @@ public class forLoopTryThis {
 			}
 			System.out.println();
 		}
-
+//
 		int sum = 0;
 		boolean P = true;
 		for (int i = 2; i < 100; i++) {
