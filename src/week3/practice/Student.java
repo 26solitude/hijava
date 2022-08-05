@@ -41,12 +41,12 @@ public class Student {
 		this.age = age;
 	}
 
-	// 010-9770-5190 -> 010-9770-
+	// 010-9770-5190 -> 010-9770-****
 	public String getTelNo() {
 		if (this.telNo == null || telNo.length() < 4) {
 			return telNo;
 		} else {
-			return telNo.substring(0, telNo.length() - 4);
+			return telNo.substring(0, telNo.length() - 4)+"****";
 		}
 	}
 
