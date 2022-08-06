@@ -16,6 +16,11 @@ public class Man {
 		this.setName(name);
 	}
 
+	public void sayHello() {
+		System.out.println("안녕하세요");
+		System.out.println("제 이름은 " + this.getName() + "입니다.");
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -33,15 +38,15 @@ public class Man {
 	}
 
 	public String toString() {
-		return this.name+"님의 잔액은 " + this.money + "원 입니다.";
+		return this.name + "님의 잔액은 " + this.money + "원 입니다.";
 	}
 
-	private void buyCoffee(int count) {
+	public void buyCoffee(int count) {
 //		this.money -= COFFEE * count;
 		this.subAmount(COFFEE, count);
 	}
 
-	private void buyDonut(int count) {
+	public void buyDonut(int count) {
 //		this.money -= DONUT * count;
 		this.subAmount(DONUT, count);
 	}
@@ -66,6 +71,6 @@ public class Man {
 		System.out.println(john);
 
 		System.out.println();
-	} 
+	}
 
 }

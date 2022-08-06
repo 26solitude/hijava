@@ -1,16 +1,28 @@
 package week3.practice;
 
+import hijava.oop.Mom;
+import hijava.oop.Son;
+
 public class oneHunnitArray {
 	public static void main(String[] args) {
 //		ex1();
 //		ex2();
 //		ex3();
-		ex4();
+//		ex4();
+		Mom mom = new Mom("영자");
+		mom.say();
+		System.out.println(mom.getName());
+		
+		System.out.println();
+		 
+		Mom son=new Son("길동");
+		son.say();
+		System.out.println(son.getName());
 	}
 
 	private static void ex4() {
 		int[] arr1 = { 10, 20, 30, 40, 50 };
-		int[] arr2 = { 1, 2, 3, 4, 5 };  
+		int[] arr2 = { 1, 2, 3, 4, 5 };
 		System.arraycopy(arr1, 0, arr2, 2, 3);
 		for (int i : arr2) {
 			System.out.println(i);
