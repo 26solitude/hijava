@@ -7,10 +7,64 @@ import week3.practice.Man;
 public class Main {
 
 	public static void main(String[] args) {
+
+		SoftWare();
+		
+//		netsports();
+
+//		weight();
+		
+//		animal();
+		
+//		AbstSuper sp=new AbstChild();
+//		int i=5;
+//		int j=10;
+//		System.out.println("min = "+sp.min(i, j)+" max = "+sp.max(i, j));
+
 //		al();
-		MonAndSon();
+//		MonAndSon();
 
 //		KoreanAndAmerican();
+	}
+
+	private static void SoftWare() {
+		SoftWare web=new WebSite();
+		SoftWare mob=new MobileApp();
+		
+		web.process();
+		System.out.println("---------------");
+		mob.process();
+	}
+
+	private static void netsports() {
+		NetSports pp = new PingPong();
+		NetSports te = new Tennis();
+
+		pp.play();
+		System.out.println("---------------");
+		te.play();
+	}
+
+	private static void animal() {
+		AnimalAbs dog = new DogAbs();
+		AnimalAbs cat = new CatAbs();
+		barkAnimal(dog);
+		barkAnimal(cat);
+	}
+
+	private static void barkAnimal(AnimalAbs ani) {
+		ani.bark();
+	}
+
+	private static void weight() {
+		weightAbs guen = new GuenAbs();
+		weightAbs pound = new poundAbs();
+
+		int i = 10;
+
+		System.out.println(guen.getGram(i));
+		System.out.println(pound.getGram(i));
+
 	}
 
 	private static void KoreanAndAmerican() {
@@ -35,9 +89,9 @@ public class Main {
 //		mom.say(); 
 //		son.say();
 
-		eatTest();
+//		eatTest();
 
-//		eat(mom);
+//		eat(mom); 
 //		eat(son);
 	}
 
