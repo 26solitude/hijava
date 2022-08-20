@@ -6,6 +6,5 @@ public class ConstLiter {
 
 	public static void main(String[] args) {
 		final String s = "abc";
-		s = "bbb";
 	}
 }
