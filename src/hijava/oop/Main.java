@@ -1,14 +1,22 @@
 package hijava.oop;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import week3.practice.Man;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException, IOException {
 
-		Calculator();
+		calcoper();
+		
+//		total();
+
+//		testinterface();
+
+//		Calculator();
 
 //		SoftWare();
 
@@ -29,9 +37,40 @@ public class Main {
 //		KoreanAndAmerican();
 	}
 
+	private static void calcoper() {
+		int x = 10, y = 5;
+
+		CalcOper op = new CalcOper();
+		int a = op.add(x, y);
+		int s = op.sub(x, y);
+		System.out.println(a + ", " + s );
+		op.mul(x, y);
+		op.div(x, y);		
+	}
+
+	private static void total() {
+
+		int[] arr = new int[] { 1, 2, 5, 9 };
+		
+		SubTotal st=new SubTotal();
+		System.out.println("Total = "+st.sum(arr));
+		System.out.println("Average = "+st.avg(arr));
+		
+		Total tt=new TotalImpl();
+		System.out.println("Total = "+tt.sum(arr));
+		System.out.println("Average = "+tt.avg(arr));
+	}
+
+	private static void testinterface() throws SQLException, IOException {
+		TestInterface ti = new TestImpl();
+		ti.select("select * from Table");
+		TestInterface.out(100);
+		DogAbs.eat("버거킹 불고기와퍼 세트");
+	}
+
 	private static void Calculator() {
-		Calculator calc=new CalculatorImpl();
-		int x=10, y=5;
+		Calculator calc = new CalculatorImpl();
+		int x = 10, y = 5;
 		calc.add(x, y);
 		calc.div(x, y);
 		calc.div(x, 0);

@@ -8,7 +8,7 @@ public class TestImpl implements TestInterface{
 
 	@Override
 	public ResultSet select(String sql) throws SQLException, IOException{
-
+		print(sql);
 		return null;
 	}
 
