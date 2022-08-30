@@ -3,6 +3,7 @@ package hijava.oop;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import week3.practice.Man;
 
@@ -10,8 +11,12 @@ public class Main {
 
 	public static void main(String[] args) throws SQLException, IOException {
 
-		calcoper();
-		
+		scanner2();
+
+//		scanner();
+
+//		calcoper();
+
 //		total();
 
 //		testinterface();
@@ -37,28 +42,81 @@ public class Main {
 //		KoreanAndAmerican();
 	}
 
+	private static void scanner2() {
+		Scanner sc = new Scanner(System.in);
+		while (true) {
+			String ret = inputScan(sc, "계산하시겠어요?(계산 : enter, 종료 : quit)");
+			if ("quit".equals(ret))
+				break;
+
+			int x = inputScanNumber(sc, "첫번째 숫자 x를 입력하세요 >> ");
+			int y = inputScanNumber(sc, "첫번째 숫자 y를 입력하세요 >> ");
+
+			String op = inputScan(sc, "연산자 * 또는 /를 입력하세요 >>");
+
+			CalcOper co = new CalcOper();
+
+			System.out.print("식 : " + x + " " + op + " " + y + " = ");
+			if ("*".equals(op)) {
+
+				co.mul(x, y);
+
+			} else if ("/".equals(op)) {
+				co.div(x, y);
+
+			} else {
+				System.out.println("연산자를 정확히 입력하세요!!");
+			}
+		}
+
+		sc.close();
+	}
+
+	private static int inputScanNumber(Scanner sc, String msg) {
+		int x = Integer.parseInt(inputScan(sc, msg));
+		return x;
+	}
+
+	private static String inputScan(Scanner sc, String msg) {
+		System.out.print(msg);
+		return sc.nextLine();
+	}
+
+	private static void scanner() {
+		System.out.print("문자열을 입력하세요 >> ");
+		Scanner sc = new Scanner(System.in);
+		String msg = sc.nextLine();
+		System.out.println("Msg = " + msg);
+
+		System.out.print("숫자를 입력하세요 >> ");
+		double inputNum = sc.nextDouble();
+		System.out.println("Input Number is " + inputNum);
+
+		sc.close();
+	}
+
 	private static void calcoper() {
 		int x = 10, y = 5;
 
 		CalcOper op = new CalcOper();
 		int a = op.add(x, y);
 		int s = op.sub(x, y);
-		System.out.println(a + ", " + s );
+		System.out.println(a + ", " + s);
 		op.mul(x, y);
-		op.div(x, y);		
+		op.div(x, y);
 	}
 
 	private static void total() {
 
 		int[] arr = new int[] { 1, 2, 5, 9 };
-		
-		SubTotal st=new SubTotal();
-		System.out.println("Total = "+st.sum(arr));
-		System.out.println("Average = "+st.avg(arr));
-		
-		Total tt=new TotalImpl();
-		System.out.println("Total = "+tt.sum(arr));
-		System.out.println("Average = "+tt.avg(arr));
+
+		SubTotal st = new SubTotal();
+		System.out.println("Total = " + st.sum(arr));
+		System.out.println("Average = " + st.avg(arr));
+
+		Total tt = new TotalImpl();
+		System.out.println("Total = " + tt.sum(arr));
+		System.out.println("Average = " + tt.avg(arr));
 	}
 
 	private static void testinterface() throws SQLException, IOException {
