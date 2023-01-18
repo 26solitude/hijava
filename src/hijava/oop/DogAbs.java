@@ -12,7 +12,7 @@ public class DogAbs extends AnimalAbs {
 
 	@Override
 	public String toString() {
-		return "This is Dog";
+		return "This is dog";
 	}
 
 	public static void main(String[] args) {

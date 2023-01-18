@@ -40,6 +40,8 @@ public class Main {
 //		MonAndSon();
 
 //		KoreanAndAmerican();
+		
+		
 	}
 
 	private static void scanner2() {
@@ -119,12 +121,12 @@ public class Main {
 		System.out.println("Average = " + tt.avg(arr));
 	}
 
-	private static void testinterface() throws SQLException, IOException {
-		TestInterface ti = new TestImpl();
-		ti.select("select * from Table");
-		TestInterface.out(100);
-		DogAbs.eat("버거킹 불고기와퍼 세트");
-	}
+//	private static void testinterface() throws SQLException, IOException {
+//		TestInterface ti = new TestImpl();
+//		ti.select("select * from Table");
+//		TestInterface.out(100);
+//		DogAbs.eat("버거킹 불고기와퍼 세트");
+//	}
 
 	private static void Calculator() {
 		Calculator calc = new CalculatorImpl();

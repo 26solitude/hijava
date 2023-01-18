@@ -8,7 +8,11 @@ public class main {
 	public static void main(String args[]) throws SQLException, IOException {
 //		TestInterface();
 //		total();
-		Calc();
+//		Calc();
+
+		
+	
+	
 	}
 
 	private static void Calc() {

@@ -7,12 +7,12 @@ import java.lang.reflect.Method;
 import java.util.Objects;
 
 public class Student implements Cloneable {
+
 	private int id;
 	private String name;
-	
-	public Student()
-	{
-		this.name="Guest";
+
+	public Student() {
+		this.name = "Guest";
 	}
 
 	public Student(int id, String name) {
@@ -20,12 +20,12 @@ public class Student implements Cloneable {
 		this.name = name;
 	}
 
-	public int getSno() {
+	public int getId() {
 		return id;
 	}
 
-	public void setSno(int sno) {
-		this.id = sno;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -42,52 +42,34 @@ public class Student implements Cloneable {
 	}
 
 	@Override
-	public int hashCode() {
-		return Objects.hash(id, name);
-	}
-
-	// if(s1!=null && s1.equals(s2)) {
-	@Override
-	public boolean equals(Object obj) {
-		// 동일한 메모리 주소면 true
-		if (this == obj)
-			return true;
-
-		// this는 절대 null이 될 수 없으므로 obj null이면 false!!
-		if (obj == null)
-			return false;
-
-		// 동일한 class type이 아니면 false
-		if (getClass() != obj.getClass())
-			return false;
-
-		Student other = (Student) obj;
-		if (this.id != other.id)
-			return false;
-
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-
-		return true;
-
-//		Student other = (Student) obj;
-//		return this.id == other.id && this.name != null && this.name.equals(other.name);
-	}
-
 	public Object clone() throws CloneNotSupportedException {
 		Student clobj = (Student) super.clone();
 		clobj.name = clobj.name + " 복제본!";
 		return clobj;
 	}
 
-	public static void main(String[] args)
-			throws CloneNotSupportedException, ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, SecurityException, IllegalArgumentException, InvocationTargetException {
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, name);
+	}
 
-//		Student s = new Student(161163, "조장호");
-//		System.out.println(s.getClass()+", "+s.getClass().getSimpleName());
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) // 메모리 주소 비교
+			return true;
+		if (obj == null) // this는 null이 될 수 없으므로 obj가 null이면 false
+			return false;
+		if (getClass() != obj.getClass()) // 동일한 class type이 아니면 false
+			return false;
+		Student other = (Student) obj;
+		return id == other.id && Objects.equals(name, other.name);
+	}
+
+	public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, SecurityException, IllegalArgumentException, InvocationTargetException {
+		Student s = new Student(161163, "조장호");
+//		Student s2=(Student)s.clone();
+//		System.out.println(s2);
+//		System.out.println(s.getClass());
 
 		String inputStr = "hijava.basic.Student";
 		Class<?> cls = Class.forName(inputStr);
@@ -97,90 +79,69 @@ public class Student implements Cloneable {
 		for (Constructor c : cls.getConstructors())
 			System.out.println("constructor = " + c);
 		for (Field f : cls.getFields())
-			System.out.println("Field = " + f);
+			System.out.println("field = " + f);
 		for (Method m : cls.getMethods()) {
-			System.out.println("Method = " + m.getName());
-			if("getName".equals(m.getName()))
-			{
-				System.out.println("-------------------");
+			System.out.println("method = " + m.getName());
+			if ("getName".equals(m.getName())) {
+				System.out.println("----------------------");
 			}
 		}
-		
-		System.out.println();
-		Student newStu=(Student)cls.newInstance();
+
+		Student newStu = (Student) cls.newInstance();
 		System.out.println(newStu);
 		Method setnameMethod = cls.getMethod("setName", String.class);
 		setnameMethod.invoke(newStu, "죠쟝호");
 		Method getnameMethod= cls.getMethod("getName");
 		System.out.println("newStu.name = "+getnameMethod.invoke(newStu));
 		
-		Method setidMethod=cls.getMethod("setSno", int.class );
-		setidMethod.invoke(newStu, 200);
-		System.out.println(newStu);
-		
-//		Student s2=(Student)cls.newInstance();
-
-//		boolean hasCondition=true;
-//		String searchStr="조장호";
-//		String s="select * from Tbl where";
-//		if(hasCondition)
-//		{
-//			s=s+"where name like %"+searchStr+"%";
-//			s+=" and id > 0";
-//			s += " limit 10";
+//		boolean hasCondition = true;
+//		String searchStr = "조장호";
+//		String s = "select * from Tbl";
+//		if (hasCondition) {
+//			s = s + "where name like '%" + searchStr + "%";
+//			s += "and id > 0";
+//			s += "limit 10"; 
 //		}
-//		System.out.println(s);
-//		
-//		StringBuilder sb=new StringBuilder();
+//
+//		StringBuilder sb = new StringBuilder();
 //		sb.append("select * from Tbl");
-//		if(hasCondition)
-//		{
-//			sb.append(" where name like %").append(searchStr).append("%");
+//		if (hasCondition) {
+//			sb.append("where name like '%").append(searchStr).append("%");
 //			sb.append(100).append('T');
 //		}
-//		System.out.println(sb);
 
-//		StringBuilder sb = new StringBuilder();
-//		sb.append("aaaaaa");
+//		sb.append("aaa");
 //		System.out.println("sb1 = " + sb.toString());
 //		sb.setLength(0);
-//		System.out.println("sb2 = " + sb.toString());
+//		System.out.println("sb2 =  " + sb.toString());
 //
 //		StringBuffer sf = new StringBuffer();
-//		sf.append("aaaaaa");
-//		System.out.println("sb1 = " + sf.toString());
+//		sf.append("aaa");
+//		System.out.println("sf1 = " + sf.toString());
 //		sf.setLength(0);
-//		System.out.println("sb2 = " + sf.toString());
+//		System.out.println("sf2 = " + sf.toString());
 
-//		Student s1 = new Student(161163, "조장호");
-//		Student s2= (Student) s1.clone();
-//		System.out.println(s1);
-//		System.out.println(s2);
-
-//		Student s2 = new Student(181163, "손정동");
-//		Student s3 = new Student(161163, "조장호");
-//		Student s4 = s1;
-//		System.out.println(s1);
-//		String ss = new String("조장호");
-//		Integer obj = new Integer(s1.id);
+//		System.out.println(s);
+//		String ss=new String("조장호");
+//		Integer obj = new Integer(s.id);
 //		Integer obj2 = new Integer(161163);
-//		System.out.println(s1.name.hashCode() + "::" + ss.hashCode());
-//		System.out.println(obj.hashCode() + "::" + obj2.hashCode());
-//		System.out.println();
+//		System.out.println(s.name.hashCode()+"::"+ss.hashCode());
+//		System.out.println(obj.hashCode()+"="+obj2.hashCode());
+//
+//		Student s1 = new Student(123, "Hong");
+//		Student s2 = new Student(456, "Kim");
+//		Student s3 = new Student(123, "Hong");
+//		Student s4 = s1;
 //
 //		System.out.println("s1 equals s2 = " + s2.equals(s1));
-//		System.out.println("s1 equals s3 = " + s3.equals(s1));
+//		System.out.println("s1 equals s3 = " + s3.equals(s1)); 
 //		System.out.println("s1 equals s4 = " + s4.equals(s1));
-//		System.out.println();
 //
-//		System.out.println(s1.hashCode());
-//		System.out.println(s3.hashCode());
+//		System.out.println("hong hash = " +s1.hashCode());
+//		System.out.println(s2.hashCode());
 //		System.out.println(s4.hashCode());
-//		System.out.println();
-//
 //		System.out.println(System.identityHashCode(s1));
-//		System.out.println(System.identityHashCode(s3));
 //		System.out.println(System.identityHashCode(s4));
-//		System.out.println();
+
 	}
 }
